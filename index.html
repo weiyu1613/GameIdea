@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>锈蚀深渊 · Rust Abyss — 游戏设计作品集</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700;900&family=Outfit:wght@300;400;600&family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0A0A0F;
+            color: #E0E0E8;
+            font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(123, 79, 187, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(232, 197, 71, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(57, 232, 165, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(123, 79, 187, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(123, 79, 187, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', 'Noto Serif SC', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #E0E0E8 0%, #7B4FBB 50%, #E8C547 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(123, 79, 187, 0.3);
+            animation: glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(123, 79, 187, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(232, 197, 71, 0.2)); }
+        }
+
+        .subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: #7A7A8E;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .slogan {
+            font-family: 'Crimson Pro', 'Noto Serif SC', serif;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #E8C547;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .cards { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(123, 79, 187, 0.2);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: #E0E0E8;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--card-accent, #7B4FBB), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--card-accent, #7B4FBB);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px var(--card-glow, rgba(123, 79, 187, 0.2));
+            background: rgba(30, 30, 46, 0.8);
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.7rem;
+            color: var(--card-accent, #7B4FBB);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-family: 'Crimson Pro', 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #A0A0B0;
+            line-height: 1.6;
+        }
+
+        .card-1 { --card-accent: #7B4FBB; --card-glow: rgba(123, 79, 187, 0.3); }
+        .card-2 { --card-accent: #E8C547; --card-glow: rgba(232, 197, 71, 0.3); }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #5A5A6E;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .footer a {
+            color: #7B4FBB;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover { color: #E8C547; }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(123, 79, 187, 0.3);
+            color: #A0A0B0;
+            background: rgba(123, 79, 187, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="subtitle">RUST ABYSS</div>
+        <h1 class="logo">锈蚀深渊</h1>
+        <p class="slogan">当世界碎裂，谁来缝合？</p>
+
+        <div class="tags">
+            <span class="tag">2D Metroidvania ARPG</span>
+            <span class="tag">Roguelite</span>
+            <span class="tag">Phaser 3.90 LTS</span>
+            <span class="tag">Story-Driven</span>
+        </div>
+
+        <div class="cards">
+            <a href="./rust-abyss-pitch/rust-abyss-pitch.html" class="card card-1">
+                <span class="card-icon">📊</span>
+                <div class="card-tag">Investor Pitch Deck</div>
+                <div class="card-title">投资人路演</div>
+                <div class="card-desc">16页完整路演PPT：世界观、四层世界、角色设计、战斗系统、美术方向、商业化、团队、路线图</div>
+            </a>
+
+            <a href="./rust-abyss-comic/rust-abyss-comic.html" class="card card-2">
+                <span class="card-icon">📖</span>
+                <div class="card-tag">Story Comic</div>
+                <div class="card-title">连环画故事</div>
+                <div class="card-desc">100+叙事面板：灾变前史、缝合日、8章完整剧情、5结局、角色图鉴，图+文字漫画形式</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>GitHub: <a href="https://github.com/weiyu1613/GameIdea" target="_blank">github.com/weiyu1613/GameIdea</a></p>
+        </div>
+    </div>
+</body>
+</html>
