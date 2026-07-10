@@ -351,6 +351,21 @@
     function applyScrollModeScale() {
       if (!scrollMode) return;
       const vw = window.innerWidth;
+
+      /* ===== 手机端：禁用 transform:scale，使用 CSS 原生响应式布局 ===== */
+      if (vw < 768) {
+        slideWrappers.forEach(function(wrapper) {
+          wrapper.style.width = '100%';
+          wrapper.style.height = 'auto';
+          wrapper.style.minHeight = 'auto';
+        });
+        slides.forEach(function(s) {
+          s.style.cssText = 'position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:100%!important;height:auto!important;min-height:auto!important;transform:none!important;transform-origin:auto!important;opacity:1!important;pointer-events:auto!important;transition:none!important;inset:auto!important;';
+        });
+        return;
+      }
+
+      /* ===== 桌面端：保持 1920×1080 transform:scale 缩放 ===== */
       const ratio = vw / 1920;
       const slideHeight = Math.round(1080 * ratio);
       slideWrappers.forEach(function(wrapper) {

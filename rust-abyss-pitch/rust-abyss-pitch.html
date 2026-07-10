@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="rust-abyss">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>锈蚀深渊 — 投资人路演</title>
 <link rel="stylesheet" href="./_shared/fonts.css">
 <link rel="stylesheet" href="./_shared/base.css">
@@ -200,6 +203,161 @@
 .slide.is-active .anim-stagger-list > *:nth-child(4){transition-delay:.32s}
 .slide.is-active .anim-stagger-list > *:nth-child(5){transition-delay:.4s}
 .slide.is-active .anim-stagger-list > *:nth-child(6){transition-delay:.48s}
+
+/* ================================================ */
+/* ===== 手机自适应 (≤768px) ===== */
+/* ================================================ */
+@media (max-width: 768px) {
+  /* ===== 基础布局 ===== */
+  .slide{padding:24px 16px!important;min-height:auto!important;justify-content:flex-start!important;overflow:visible!important;position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;transform:none!important}
+  .deck{gap:12px;padding:12px 0}
+  .deck-header{left:16px;right:16px;top:12px;font-size:10px}
+  .deck-footer{left:16px;right:16px;bottom:12px;font-size:10px}
+  .slide-scroll-wrapper{box-shadow:0 2px 12px rgba(0,0,0,.4)}
+  body.scroll-mode .deck{gap:12px;padding:12px 0}
+
+  /* ===== 排版 ===== */
+  h1.title,.h1{font-size:32px;margin-bottom:10px}
+  h2.title,.h2{font-size:24px;margin-bottom:10px;line-height:1.2}
+  h3,.h3{font-size:18px;margin-bottom:6px}
+  h4,.h4{font-size:15px;margin-bottom:4px}
+  .lede{font-size:15px;line-height:1.5}
+  .eyebrow{font-size:11px}
+  .kicker{font-size:12px}
+  .world-intro{font-size:14px;line-height:1.6;margin-bottom:12px}
+
+  /* ===== P1 封面 ===== */
+  .cover-content{padding:24px 16px}
+  .cover-title{font-size:36px!important}
+  .cover-slogan{font-size:14px;margin-top:10px}
+  .cover-tags{gap:6px;margin-top:14px;flex-wrap:wrap}
+  .cover-tags .tag{font-size:10px;padding:3px 8px}
+
+  /* ===== 通用组件 ===== */
+  .realm-grid,.art-showcase,.pillar-grid,.combat-grid,.system-grid,
+  .civ-grid,.art-style-grid{grid-template-columns:1fr!important;gap:10px!important}
+  .realm-card{height:140px}
+  .realm-card .info h4{font-size:15px}
+  .realm-card .info p{font-size:11px;line-height:1.4}
+  .art-card{height:180px}
+  .art-card .label h4{font-size:14px}
+  .pillar-card{padding:14px}
+  .pillar-card .icon{font-size:22px;margin-bottom:6px}
+  .pillar-card h3{font-size:16px;margin-bottom:6px}
+  .pillar-card p{font-size:12px;line-height:1.5}
+  .pillar-card .taboo{font-size:11px}
+
+  /* ===== 卡片通用 ===== */
+  .card{padding:14px!important}
+  .civ-card{padding:14px}
+  .civ-card h3{font-size:15px}
+  .civ-card .civ-faith{font-size:12px}
+  .civ-card p{font-size:12px;line-height:1.5}
+  .combat-card,.system-card,.art-style-card{padding:14px}
+  .combat-card h3,.system-card h3,.art-style-card h3{font-size:15px;margin-bottom:6px}
+  .combat-card .key{width:36px;height:36px;font-size:14px}
+  .combat-card .key-info{font-size:11px}
+  .combat-card li{font-size:12px}
+  .cancel-chain{padding:10px 12px;margin-top:10px}
+  .cancel-chain .chain{font-size:11px;line-height:1.6}
+  .system-card .stat-row{padding:5px 0}
+  .system-card .stat-label{font-size:12px}
+  .system-card .stat-val{font-size:12px}
+  .personality-grid{grid-template-columns:1fr 1fr;gap:6px}
+  .personality-item{padding:6px 8px}
+  .personality-item .dim-val{font-size:15px}
+  .personality-item .dim-desc{font-size:10px}
+  .art-style-card .unified-row{font-size:12px}
+  .layer-diff .ld-row{grid-template-columns:60px 1fr;font-size:11px}
+
+  /* ===== P5 故事 ===== */
+  .story-content{padding:0 8px}
+  .story-quote{font-size:26px!important;margin-bottom:14px;line-height:1.2}
+  .story-steps{flex-direction:column;gap:12px;margin-top:16px}
+  .story-step .num{font-size:18px}
+  .story-step h4{font-size:14px}
+  .story-step p{font-size:12px}
+  .story-choice{font-size:15px;margin-top:18px}
+
+  /* ===== P6 角色 ===== */
+  .char-hero{height:200px;margin-bottom:10px}
+  .char-quote{font-size:14px;bottom:10px;left:14px;right:14px}
+  .char-list{grid-template-columns:1fr 1fr!important;gap:8px}
+  .char-item{padding:10px}
+  .char-item h5{font-size:12px}
+  .char-item p{font-size:10px;line-height:1.3}
+
+  /* ===== P10 Boss ===== */
+  .boss-flow{gap:4px}
+  .boss-step{font-size:10px;padding:4px 8px}
+  .boss-arrow{font-size:12px}
+  .boss-table{font-size:11px;display:block;overflow-x:auto;white-space:nowrap}
+  .boss-table th,.boss-table td{padding:4px 6px}
+
+  /* ===== P13 商业 ===== */
+  .biz-vs{grid-template-columns:1fr!important;gap:10px}
+  .biz-mid{font-size:24px;min-height:30px}
+  .biz-side{padding:14px}
+  .biz-side h3{font-size:16px}
+  .biz-side .price{font-size:24px}
+  .biz-side li{font-size:12px}
+  .biz-principles{gap:6px;margin-top:12px}
+  .biz-principles .principle{font-size:10px;padding:4px 10px}
+  .biz-market{font-size:12px;margin-top:10px}
+
+  /* ===== P14 团队 ===== */
+  .team-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .team-card{padding:14px}
+  .team-card .value{font-size:26px}
+  .team-card .desc{font-size:11px}
+  .team-note{padding:12px 14px;font-size:12px;line-height:1.5;margin-top:12px}
+
+  /* ===== P15 路线图 ===== */
+  .roadmap-tl{margin-top:20px}
+  .roadmap-tl::before{display:none}
+  .roadmap-row{grid-template-columns:1fr;gap:12px}
+  .roadmap-item{padding-top:0;padding-left:24px;text-align:left;position:relative}
+  .roadmap-dot{position:absolute;top:4px;left:0;transform:none}
+  .roadmap-phase{position:relative;top:auto;left:auto;right:auto;margin-bottom:4px}
+  .roadmap-item h4{font-size:14px}
+  .roadmap-item p{font-size:11px}
+  .roadmap-status{flex-direction:column;gap:8px;margin-top:14px}
+  .roadmap-status .status-item{font-size:11px}
+  .tentative-badge{font-size:10px;padding:2px 8px;margin-left:6px}
+
+  /* ===== P16 致谢 ===== */
+  .thanks-title{font-size:32px!important}
+  .thanks-slogan{font-size:16px;margin-bottom:18px}
+  .thanks-contact{flex-direction:column;gap:8px}
+  .thanks-contact div{font-size:12px!important}
+
+  /* ===== 工具类 ===== */
+  .row{flex-direction:column;gap:12px}
+  .g2,.g3,.g4{grid-template-columns:1fr!important}
+  .flow{flex-direction:column;gap:8px}
+  .flow .arr{transform:rotate(90deg)}
+
+  /* ===== 滚动模式间距 ===== */
+  body.scroll-mode .slide-scroll-wrapper{margin-bottom:0}
+}
+
+/* ===== 超小屏幕 (≤380px) ===== */
+@media (max-width: 380px) {
+  .slide{padding:16px 10px!important}
+  .cover-title{font-size:28px!important}
+  h2.title,.h2{font-size:20px}
+  .char-list{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .personality-grid{grid-template-columns:1fr}
+  .story-quote{font-size:20px!important}
+  .thanks-title{font-size:26px!important}
+}
+
+/* ===== 触摸设备优化 ===== */
+@media (hover: none) and (pointer: coarse) {
+  .realm-card:hover img,.art-card:hover img{transform:none}
+  .card-hover:hover{transform:none}
+}
 </style>
 </head>
 <body data-themes="rust-abyss" data-theme-base="./_shared/themes/">
