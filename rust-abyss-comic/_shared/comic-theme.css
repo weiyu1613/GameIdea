@@ -1,0 +1,600 @@
+/* ===== 锈蚀深渊·连环画 主题系统 ===== */
+
+:root {
+  /* 基础色 */
+  --bg: #0A0A0F;
+  --bg-soft: #15151C;
+  --bg-panel: #1E1E2E;
+  --bg-card: #252535;
+
+  /* 文字 */
+  --text-1: #E0E0E8;
+  --text-2: #A0A0B0;
+  --text-3: #7A7A8E;
+
+  /* 强调色 */
+  --accent: #7B4FBB;       /* 裂隙紫 */
+  --accent-2: #E8C547;     /* 碎片金 */
+  --accent-3: #39E8A5;     /* 荧光绿 */
+
+  /* 地表层 */
+  --realm-surface: #2A2D35;
+  --realm-surface-accent: #7B4FBB;
+  --realm-surface-gold: #E8C547;
+
+  /* 机械层 */
+  --realm-mech: #4A7C59;
+  --realm-mech-accent: #C87533;
+  --realm-mech-fire: #F0A030;
+
+  /* 遗迹层 */
+  --realm-ruins: #8B8680;
+  --realm-ruins-accent: #D4A843;
+  --realm-ruins-void: #3D3B5C;
+
+  /* 活体层 */
+  --realm-blood: #6B2D3E;
+  --realm-blood-accent: #39E8A5;
+  --realm-blood-purple: #A855F7;
+
+  /* 意识层 */
+  --realm-mind: #3D3B5C;
+  --realm-mind-gold: #D4A843;
+  --realm-mind-void: #0A0A14;
+
+  /* 字体 */
+  --font-heading: 'Crimson Pro', 'Noto Serif SC', serif;
+  --font-body: 'Outfit', 'Noto Sans SC', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* 间距 */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* 过渡 */
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===== 全局重置 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-body);
+  line-height: 1.8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== 进度条 ===== */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ===== 章节导航 ===== */
+.chapter-nav {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  opacity: 0.6;
+  transition: opacity var(--transition);
+}
+
+.chapter-nav:hover {
+  opacity: 1;
+}
+
+.chapter-nav a {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-3);
+  border: 1px solid var(--text-3);
+  transition: all var(--transition);
+  position: relative;
+  text-decoration: none;
+}
+
+.chapter-nav a:hover,
+.chapter-nav a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transform: scale(1.3);
+}
+
+.chapter-nav a::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: var(--text-2);
+  background: var(--bg-panel);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.chapter-nav a:hover::after {
+  opacity: 1;
+}
+
+/* ===== 容器 ===== */
+.comic-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===== 章节分隔 ===== */
+.chapter-divider {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin: var(--space-xl) 0;
+}
+
+.chapter-divider .layer-bar {
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chapter-divider .chapter-number {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-3);
+  letter-spacing: 0.3em;
+  margin-bottom: var(--space-sm);
+}
+
+.chapter-divider .chapter-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 0 30px rgba(123, 79, 187, 0.3);
+}
+
+.chapter-divider .chapter-subtitle {
+  font-size: 1rem;
+  color: var(--text-2);
+  text-align: center;
+  max-width: 600px;
+}
+
+/* ===== 面板基础 ===== */
+.panel {
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.panel.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panel-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-panel);
+}
+
+.panel-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--text-1);
+}
+
+.panel-text {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--text-2);
+  margin-bottom: var(--space-sm);
+}
+
+.panel-text strong {
+  color: var(--text-1);
+  font-weight: 600;
+}
+
+/* ===== 全屏 Splash ===== */
+.panel-splash {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.panel-splash img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panel-splash .splash-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 2rem 2rem;
+  background: linear-gradient(to top, var(--bg) 10%, transparent);
+}
+
+.panel-splash .splash-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.panel-splash .splash-text {
+  font-size: 1rem;
+  color: var(--text-2);
+  max-width: 700px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== 图文左右 ===== */
+.panel-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.panel-split.reverse {
+  direction: rtl;
+}
+
+.panel-split.reverse > * {
+  direction: ltr;
+}
+
+.panel-split .split-image {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.panel-split .split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panel-split .split-content {
+  padding: var(--space-sm);
+}
+
+/* ===== 四宫格 ===== */
+.panel-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.panel-grid-4 .grid-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+}
+
+.panel-grid-4 .grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panel-grid-4 .grid-item .grid-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.8rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  font-size: 0.85rem;
+  color: var(--text-1);
+}
+
+.panel-grid-4 .grid-item .grid-label strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+/* ===== 引用面板 ===== */
+.panel-quote {
+  background: var(--bg-panel);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-md) 0;
+  position: relative;
+}
+
+.panel-quote .quote-speaker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.1em;
+}
+
+.panel-quote .quote-text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-1);
+}
+
+/* 角色色框 */
+.panel-quote[data-char="echo"] { border-left-color: #FFFFFF; }
+.panel-quote[data-char="echo"] .quote-speaker { color: #FFFFFF; }
+.panel-quote[data-char="chronicler"] { border-left-color: var(--accent); }
+.panel-quote[data-char="furnace"] { border-left-color: var(--realm-mech-fire); }
+.panel-quote[data-char="furnace"] .quote-speaker { color: var(--realm-mech-fire); }
+.panel-quote[data-char="stone"] { border-left-color: var(--realm-ruins-accent); }
+.panel-quote[data-char="stone"] .quote-speaker { color: var(--realm-ruins-accent); }
+.panel-quote[data-char="pulse"] { border-left-color: var(--realm-blood-accent); }
+.panel-quote[data-char="pulse"] .quote-speaker { color: var(--realm-blood-accent); }
+.panel-quote[data-char="another"] { border-left-color: var(--accent); }
+.panel-quote[data-char="beast"] { border-left-color: var(--realm-blood); }
+.panel-quote[data-char="beast"] .quote-speaker { color: var(--realm-blood-purple); }
+
+/* ===== 文字面板 ===== */
+.panel-text-only {
+  background: var(--bg-soft);
+  border: 1px solid var(--bg-panel);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-md) 0;
+}
+
+.panel-text-only .panel-title {
+  color: var(--accent-2);
+}
+
+/* ===== 结局卡 ===== */
+.panel-ending {
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--bg-card);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.panel-ending .ending-image {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.panel-ending .ending-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.panel-ending .ending-content .ending-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+}
+
+.panel-ending .ending-content .ending-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.panel-ending .ending-content .ending-condition {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-mono);
+}
+
+.panel-ending .ending-content .ending-text {
+  font-size: 0.95rem;
+  color: var(--text-2);
+  line-height: 1.8;
+}
+
+/* ===== 角色立绘小图 ===== */
+.char-portrait {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: var(--space-sm);
+}
+
+.char-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== 场景图全宽 ===== */
+.scene-full {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: var(--space-sm) 0;
+}
+
+.scene-full img {
+  width: 100%;
+  display: block;
+}
+
+/* ===== 懒加载占位 ===== */
+img[data-src] {
+  background: var(--bg-panel);
+  min-height: 200px;
+}
+
+/* ===== 封面 ===== */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cover .cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cover .cover-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.cover .cover-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.cover .cover-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 900;
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 0 40px rgba(123, 79, 187, 0.5);
+  letter-spacing: 0.05em;
+}
+
+.cover .cover-subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--text-2);
+  margin-bottom: var(--space-md);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+}
+
+.cover .cover-slogan {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--accent-2);
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ===== 层级色条 ===== */
+.layer-surface { background: linear-gradient(90deg, var(--realm-surface), var(--realm-surface-accent)); }
+.layer-mech { background: linear-gradient(90deg, var(--realm-mech), var(--realm-mech-fire)); }
+.layer-ruins { background: linear-gradient(90deg, var(--realm-ruins), var(--realm-ruins-accent)); }
+.layer-blood { background: linear-gradient(90deg, var(--realm-blood), var(--realm-blood-accent)); }
+.layer-mind { background: linear-gradient(90deg, var(--realm-mind), var(--accent)); }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .panel-split {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-ending {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-nav {
+    display: none;
+  }
+
+  .comic-container {
+    padding: 0 0.75rem;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .panel-split {
+    grid-template-columns: 1fr 1fr;
+  }
+}

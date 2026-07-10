@@ -1,0 +1,222 @@
+/* ===== 连环画布局增强 ===== */
+
+/* 场景标签条 */
+.scene-tag-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.scene-tag-bar .tag-color {
+  width: 3px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+.scene-tag-bar .tag-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* 角色对话气泡 */
+.dialogue {
+  background: var(--bg-panel);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-sm) 0;
+  position: relative;
+  border-left: 3px solid var(--text-3);
+}
+
+.dialogue .dialogue-name {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dialogue .dialogue-name .char-mini {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--text-3);
+}
+
+.dialogue .dialogue-name .char-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dialogue .dialogue-text {
+  font-size: 0.95rem;
+  color: var(--text-1);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* 角色色 */
+.dialogue[data-char="echo"] { border-left-color: #FFFFFF; }
+.dialogue[data-char="echo"] .dialogue-name { color: #FFFFFF; }
+.dialogue[data-char="chronicler"] { border-left-color: var(--accent); }
+.dialogue[data-char="furnace"] { border-left-color: var(--realm-mech-fire); }
+.dialogue[data-char="furnace"] .dialogue-name { color: var(--realm-mech-fire); }
+.dialogue[data-char="stone"] { border-left-color: var(--realm-ruins-accent); }
+.dialogue[data-char="stone"] .dialogue-name { color: var(--realm-ruins-accent); }
+.dialogue[data-char="pulse"] { border-left-color: var(--realm-blood-accent); }
+.dialogue[data-char="pulse"] .dialogue-name { color: var(--realm-blood-accent); }
+.dialogue[data-char="another"] { border-left-color: var(--accent); }
+.dialogue[data-char="narrator"] { border-left-color: var(--text-3); }
+.dialogue[data-char="narrator"] .dialogue-name { color: var(--text-3); }
+.dialogue[data-char="beast"] { border-left-color: var(--realm-blood-purple); }
+.dialogue[data-char="beast"] .dialogue-name { color: var(--realm-blood-purple); }
+
+/* 图片标注 */
+.image-caption {
+  font-size: 0.8rem;
+  color: var(--text-3);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* 章节锚点 */
+.chapter-anchor {
+  scroll-margin-top: 2rem;
+}
+
+/* 分隔线 */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+  margin: var(--space-md) auto;
+  border-radius: 1px;
+}
+
+/* 尾声 */
+.epilogue {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  background: linear-gradient(to bottom, transparent, var(--bg-soft));
+}
+
+.epilogue .epilogue-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--accent-2);
+  margin-bottom: var(--space-md);
+}
+
+.epilogue .epilogue-text {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-2);
+  line-height: 1.9;
+}
+
+/* 角色图鉴卡 */
+.char-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.char-gallery .char-card {
+  background: var(--bg-panel);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--transition);
+}
+
+.char-gallery .char-card:hover {
+  transform: translateY(-4px);
+}
+
+.char-gallery .char-card .card-image {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.char-gallery .char-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.char-gallery .char-card .card-info {
+  padding: 0.5rem 0.75rem;
+}
+
+.char-gallery .char-card .card-name {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.char-gallery .char-card .card-role {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+
+/* Boss战分镜 */
+.boss-phases {
+  display: flex;
+  gap: var(--space-xs);
+  margin: var(--space-sm) 0;
+  flex-wrap: wrap;
+}
+
+.boss-phases .phase-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-panel);
+  color: var(--text-3);
+  border: 1px solid var(--bg-card);
+}
+
+.boss-phases .phase-tag.active {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+/* 滚动提示 */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-3);
+  font-size: 0.8rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* 文字面板装饰 */
+.panel-text-only::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: var(--space-sm);
+  border-radius: 1px;
+}

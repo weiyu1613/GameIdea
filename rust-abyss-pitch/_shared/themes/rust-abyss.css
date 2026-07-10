@@ -1,0 +1,30 @@
+/* theme: rust-abyss — 锈蚀深渊·暗夜裂隙 */
+/* 基于 cinema-dark 定制，提取游戏 GDD 色板 */
+:root{
+  --bg:#0A0A0F;--bg-soft:#15151C;--surface:#15151C;--surface-2:#1E1E2E;
+  --border:rgba(123,79,187,.15);--border-strong:rgba(123,79,187,.3);
+  --text-1:#E0E0E8;--text-2:#A0A0B0;--text-3:#7A7A8E;
+  --accent:#7B4FBB;--accent-2:#E8C547;--accent-3:#39E8A5;
+  --good:#39E8A5;--warn:#E8C547;--bad:#E84545;
+  --grad:linear-gradient(135deg,#7B4FBB,#E8C547);
+  --grad-soft:linear-gradient(135deg,rgba(123,79,187,.15),rgba(232,197,71,.1));
+  --radius:8px;--radius-sm:4px;--radius-lg:16px;
+  --shadow:0 4px 16px rgba(0,0,0,.5);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.6),0 24px 60px rgba(0,0,0,.4);
+  --font-sans:'Outfit','Noto Sans SC',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  --font-serif:'Crimson Pro','Noto Serif SC',Georgia,serif;
+  --font-mono:'JetBrains Mono',SFMono-Regular,Menlo,monospace;
+  --font-display:'Crimson Pro','Noto Serif SC',Georgia,serif;
+  --letter-tight:-.02em;
+  --letter-normal:-.01em;
+  --ease:cubic-bezier(.4,0,.2,1);
+  /* 四层世界色 */
+  --realm-1:#2A2D35;
+  --realm-2:#C87533;
+  --realm-3:#D4A843;
+  --realm-4:#39E8A5;
+}
+.card{border:1px solid var(--border);background:rgba(21,21,28,.85);backdrop-filter:blur(8px)}
+.kicker{color:var(--accent-2);text-transform:uppercase;letter-spacing:.1em}
+h1.title,.h1{font-family:var(--font-display);font-weight:700;letter-spacing:.01em}
+.gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
