@@ -3,10 +3,17 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0A0F">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>锈蚀深渊 — RUST ABYSS 连环画故事</title>
   <meta name="description" content="当世界碎裂，谁来缝合？——锈蚀深渊连环画故事">
-  <link rel="stylesheet" href="./_shared/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="./_shared/comic-theme.css" as="style">
+  <link rel="stylesheet" href="./_shared/fonts.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="./_shared/fonts.css"></noscript>
   <link rel="stylesheet" href="./_shared/comic-theme.css">
   <link rel="stylesheet" href="./_shared/comic-layout.css">
 </head>
@@ -141,28 +148,28 @@
     <!-- 面板9：四宫格·地表层敌人生态 -->
     <div class="panel panel-grid-4">
       <div class="grid-item">
-        <img data-src="assets/chars/enemy_rift_beast.png" alt="裂隙兽">
+        <img data-src="assets/chars/enemy_rift_beast.jpg" alt="裂隙兽">
         <div class="grid-label">
           <strong>裂隙兽</strong>
           直冲型·地表层
         </div>
       </div>
       <div class="grid-item">
-        <img data-src="assets/chars/enemy_phantom_butterfly.png" alt="残影蝶">
+        <img data-src="assets/chars/enemy_phantom_butterfly.jpg" alt="残影蝶">
         <div class="grid-label">
           <strong>残影蝶</strong>
           环绕型·地表层
         </div>
       </div>
       <div class="grid-item">
-        <img data-src="assets/chars/enemy_rift_shooter.png" alt="裂隙射手">
+        <img data-src="assets/chars/enemy_rift_shooter.jpg" alt="裂隙射手">
         <div class="grid-label">
           <strong>裂隙射手</strong>
           远程型·地表层
         </div>
       </div>
       <div class="grid-item">
-        <img data-src="assets/chars/elite_rift_stitched.png" alt="裂隙缝合体">
+        <img data-src="assets/chars/elite_rift_stitched.jpg" alt="裂隙缝合体">
         <div class="grid-label">
           <strong>裂隙缝合体</strong>
           精英·第1章
@@ -257,7 +264,7 @@
     <!-- 面板2：编年者凝聚 -->
     <div class="panel panel-split">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/chronicler.png" alt="编年者·灰蓝袍右眼紫色光洞" style="object-fit: contain;">
+        <img data-src="assets/chars/chronicler.jpg" alt="编年者·灰蓝袍右眼紫色光洞" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <h3 class="panel-title">编年者凝聚 (Beat 100)</h3>
@@ -276,7 +283,7 @@
     <!-- 面板3：守炉人凝聚 -->
     <div class="panel panel-split reverse">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/furnace_keeper.png" alt="守炉人·半人半机械铜绿背心" style="object-fit: contain;">
+        <img data-src="assets/chars/furnace_keeper.jpg" alt="守炉人·半人半机械铜绿背心" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <h3 class="panel-title">守炉人凝聚 (Beat 100-999)</h3>
@@ -295,7 +302,7 @@
     <!-- 面板4：石语者凝聚 -->
     <div class="panel panel-split">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/stone_speaker.png" alt="石语者·60%石化孩童双眼清澈" style="object-fit: contain;">
+        <img data-src="assets/chars/stone_speaker.jpg" alt="石语者·60%石化孩童双眼清澈" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <h3 class="panel-title">石语者凝聚 (Beat 100-999)</h3>
@@ -306,7 +313,7 @@
     <!-- 面板5：脉搏凝聚 -->
     <div class="panel panel-split reverse">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/pulse.png" alt="脉搏·暗红血肉荧光紫神经纤维拟人形态" style="object-fit: contain;">
+        <img data-src="assets/chars/pulse.jpg" alt="脉搏·暗红血肉荧光紫神经纤维拟人形态" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <h3 class="panel-title">脉搏凝聚 (Beat 100-999)</h3>
@@ -382,7 +389,7 @@
     <!-- 面板4：遇编年者 -->
     <div class="panel panel-split">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/chronicler.png" alt="编年者·佝偻老者右眼紫色光洞" style="object-fit: contain;">
+        <img data-src="assets/chars/chronicler.jpg" alt="编年者·佝偻老者右眼紫色光洞" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第1章 · 地表层</span>
@@ -407,7 +414,7 @@
     <!-- 面板5：裂隙缝合体 -->
     <div class="panel panel-split reverse">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/elite_rift_stitched.png" alt="裂隙缝合体·多材质缝合体" style="object-fit: contain;">
+        <img data-src="assets/chars/elite_rift_stitched.jpg" alt="裂隙缝合体·多材质缝合体" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第1章 · 精英战</span>
@@ -422,7 +429,7 @@
 
     <!-- 面板6：Boss·裂隙织者 -->
     <div class="panel panel-splash">
-      <img data-src="assets/chars/boss_rift_weaver.png" alt="Boss·裂隙织者" style="object-fit: contain; background: var(--bg-soft);">
+      <img data-src="assets/chars/boss_rift_weaver.jpg" alt="Boss·裂隙织者" style="object-fit: contain; background: var(--bg-soft);">
       <div class="splash-overlay">
         <h3 class="splash-title">Boss · 裂隙织者</h3>
         <p class="splash-text">半边骑士铠甲半边机械臂背后伸出藤蔓的混合体。它跪地拼碎片，感知主角后起身。它不是在攻击主角——它在试图拼回自己。受击时不同材质（石/金属/血肉/紫光）依次剥落。</p>
@@ -509,7 +516,7 @@
     <!-- 面板13：齿轮骑士 -->
     <div class="panel panel-split">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/elite_gear_knight.png" alt="齿轮骑士·装甲齿轮士兵" style="object-fit: contain;">
+        <img data-src="assets/chars/elite_gear_knight.jpg" alt="齿轮骑士·装甲齿轮士兵" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第2章 · 精英战</span>
@@ -525,7 +532,7 @@
 
     <!-- 面板14：Boss·齿轮暴君 -->
     <div class="panel panel-splash">
-      <img data-src="assets/chars/boss_gear_tyrant.png" alt="Boss·齿轮暴君" style="object-fit: contain; background: var(--bg-soft);">
+      <img data-src="assets/chars/boss_gear_tyrant.jpg" alt="Boss·齿轮暴君" style="object-fit: contain; background: var(--bg-soft);">
       <div class="splash-overlay">
         <h3 class="splash-title">Boss · 齿轮暴君</h3>
         <p class="splash-text">被抽取核心强行驱动的巨型战争机械。胸口核心被折叠能量扭曲。</p>
@@ -636,7 +643,7 @@
     <!-- 面板6：石像将军 -->
     <div class="panel panel-split reverse">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/elite_stone_general.png" alt="石像将军·石化战士" style="object-fit: contain;">
+        <img data-src="assets/chars/elite_stone_general.jpg" alt="石像将军·石化战士" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第3章 · 精英战</span>
@@ -652,7 +659,7 @@
 
     <!-- 面板7：Boss·解冻者 -->
     <div class="panel panel-splash">
-      <img data-src="assets/chars/boss_thawed.png" alt="Boss·解冻者" style="object-fit: contain; background: var(--bg-soft);">
+      <img data-src="assets/chars/boss_thawed.jpg" alt="Boss·解冻者" style="object-fit: contain; background: var(--bg-soft);">
       <div class="splash-overlay">
         <h3 class="splash-title">Boss · 解冻者</h3>
         <p class="splash-text">石化教师在灾变瞬间张开双臂护住学生。3阶段渐变：全身石壳→上半身解冻→完全解冻露出悲伤人形。战斗中石壳剥落，石壳下是保护的姿态。</p>
@@ -782,7 +789,7 @@
     <!-- 面板5：血管猎手 -->
     <div class="panel panel-split">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/elite_vessel_hunter.png" alt="血管猎手·巡逻血细胞变体" style="object-fit: contain;">
+        <img data-src="assets/chars/elite_vessel_hunter.jpg" alt="血管猎手·巡逻血细胞变体" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第5章 · 精英战</span>
@@ -793,7 +800,7 @@
 
     <!-- 面板6：Boss·免疫之墙 -->
     <div class="panel panel-splash">
-      <img data-src="assets/chars/boss_immune_wall.png" alt="Boss·免疫之墙" style="object-fit: contain; background: var(--bg-soft);">
+      <img data-src="assets/chars/boss_immune_wall.jpg" alt="Boss·免疫之墙" style="object-fit: contain; background: var(--bg-soft);">
       <div class="splash-overlay">
         <h3 class="splash-title">Boss · 免疫之墙</h3>
         <p class="splash-text">巨型白细胞变体不断分裂融合围堵主角。第三阶段拟态成主角样貌——创伤应激反应。与心跳同步——心跳骤停时是攻击窗口。</p>
@@ -896,7 +903,7 @@
 
     <!-- 面板13：Boss·缝合师残影 -->
     <div class="panel panel-splash">
-      <img data-src="assets/chars/boss_stitcher_shadow.png" alt="Boss·缝合师残影" style="object-fit: contain; background: var(--bg-soft);">
+      <img data-src="assets/chars/boss_stitcher_shadow.jpg" alt="Boss·缝合师残影" style="object-fit: contain; background: var(--bg-soft);">
       <div class="splash-overlay">
         <h3 class="splash-title">Boss · 缝合师残影</h3>
         <p class="splash-text">从镜中走出的主角过去的镜像。使用玩家当前周目从未使用过的技能——迫使跳出舒适区。第3阶段"犹豫态"动作变慢——它在犹豫是否要继续战斗。</p>
@@ -938,7 +945,7 @@
     <!-- 面板1：守炉人 -->
     <div class="panel panel-split">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/furnace_keeper.png" alt="守炉人·站在齿轮旁" style="object-fit: contain;">
+        <img data-src="assets/chars/furnace_keeper.jpg" alt="守炉人·站在齿轮旁" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第7章 · 最后巡礼</span>
@@ -959,7 +966,7 @@
     <!-- 面板2：石语者 -->
     <div class="panel panel-split reverse">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/stone_speaker.png" alt="石语者·走到自己石像前" style="object-fit: contain;">
+        <img data-src="assets/chars/stone_speaker.jpg" alt="石语者·走到自己石像前" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第7章 · 最后巡礼</span>
@@ -980,7 +987,7 @@
     <!-- 面板3：编年者 -->
     <div class="panel panel-split">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/chronicler.png" alt="编年者·翻动无字书最后一页" style="object-fit: contain;">
+        <img data-src="assets/chars/chronicler.jpg" alt="编年者·翻动无字书最后一页" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第7章 · 最后巡礼</span>
@@ -996,7 +1003,7 @@
     <!-- 面板4：脉搏 -->
     <div class="panel panel-split reverse">
       <div class="split-image" style="background: var(--bg-soft);">
-        <img data-src="assets/chars/pulse.png" alt="脉搏·搏动变得平静" style="object-fit: contain;">
+        <img data-src="assets/chars/pulse.jpg" alt="脉搏·搏动变得平静" style="object-fit: contain;">
       </div>
       <div class="split-content">
         <span class="panel-tag">第7章 · 最后巡礼</span>
@@ -1048,7 +1055,7 @@
 
     <!-- 面板9：终局Boss·万物之心 -->
     <div class="panel panel-splash">
-      <img data-src="assets/chars/boss_heart_of_all.png" alt="终局Boss·万物之心" style="object-fit: contain; background: var(--bg-soft);">
+      <img data-src="assets/chars/boss_heart_of_all.jpg" alt="终局Boss·万物之心" style="object-fit: contain; background: var(--bg-soft);">
       <div class="splash-overlay">
         <h3 class="splash-title">终局Boss · 万物之心</h3>
         <p class="splash-text">3战斗形态（A激进/B悲伤/C混沌）+ 3轮轮回复刻前4Boss简化招式。终局对话态——巨兽核心意识首次直接对话。</p>
@@ -1182,133 +1189,133 @@
       <h3 class="panel-title">角色图鉴</h3>
       <div class="char-gallery">
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/protagonist.png" alt="主角"></div>
+          <div class="card-image"><img data-src="assets/chars/protagonist.jpg" alt="主角"></div>
           <div class="card-info">
             <div class="card-name">主角</div>
             <div class="card-role">失忆旅人/缝合师碎片</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/echo.png" alt="回声"></div>
+          <div class="card-image"><img data-src="assets/chars/echo.jpg" alt="回声"></div>
           <div class="card-info">
             <div class="card-name">回声</div>
             <div class="card-role">缝合师最后念头</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/chronicler.png" alt="编年者"></div>
+          <div class="card-image"><img data-src="assets/chars/chronicler.jpg" alt="编年者"></div>
           <div class="card-info">
             <div class="card-name">编年者</div>
             <div class="card-role">记忆记录者</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/furnace_keeper.png" alt="守炉人"></div>
+          <div class="card-image"><img data-src="assets/chars/furnace_keeper.jpg" alt="守炉人"></div>
           <div class="card-info">
             <div class="card-name">守炉人</div>
             <div class="card-role">齿轮维护者</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/stone_speaker.png" alt="石语者"></div>
+          <div class="card-image"><img data-src="assets/chars/stone_speaker.jpg" alt="石语者"></div>
           <div class="card-info">
             <div class="card-name">石语者</div>
             <div class="card-role">石化共鸣者</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/pulse.png" alt="脉搏"></div>
+          <div class="card-image"><img data-src="assets/chars/pulse.jpg" alt="脉搏"></div>
           <div class="card-info">
             <div class="card-name">脉搏</div>
             <div class="card-role">巨兽代言人</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/boss_rift_weaver.png" alt="裂隙织者"></div>
+          <div class="card-image"><img data-src="assets/chars/boss_rift_weaver.jpg" alt="裂隙织者"></div>
           <div class="card-info">
             <div class="card-name">裂隙织者</div>
             <div class="card-role">Boss 1 · 第1章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/boss_gear_tyrant.png" alt="齿轮暴君"></div>
+          <div class="card-image"><img data-src="assets/chars/boss_gear_tyrant.jpg" alt="齿轮暴君"></div>
           <div class="card-info">
             <div class="card-name">齿轮暴君</div>
             <div class="card-role">Boss 2 · 第2章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/boss_thawed.png" alt="解冻者"></div>
+          <div class="card-image"><img data-src="assets/chars/boss_thawed.jpg" alt="解冻者"></div>
           <div class="card-info">
             <div class="card-name">解冻者</div>
             <div class="card-role">Boss 3 · 第3章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/boss_immune_wall.png" alt="免疫之墙"></div>
+          <div class="card-image"><img data-src="assets/chars/boss_immune_wall.jpg" alt="免疫之墙"></div>
           <div class="card-info">
             <div class="card-name">免疫之墙</div>
             <div class="card-role">Boss 5 · 第5章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/boss_stitcher_shadow.png" alt="缝合师残影"></div>
+          <div class="card-image"><img data-src="assets/chars/boss_stitcher_shadow.jpg" alt="缝合师残影"></div>
           <div class="card-info">
             <div class="card-name">缝合师残影</div>
             <div class="card-role">Boss 6 · 第6章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/boss_heart_of_all.png" alt="万物之心"></div>
+          <div class="card-image"><img data-src="assets/chars/boss_heart_of_all.jpg" alt="万物之心"></div>
           <div class="card-info">
             <div class="card-name">万物之心</div>
             <div class="card-role">Boss 8 · 终局</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/enemy_rift_beast.png" alt="裂隙兽"></div>
+          <div class="card-image"><img data-src="assets/chars/enemy_rift_beast.jpg" alt="裂隙兽"></div>
           <div class="card-info">
             <div class="card-name">裂隙兽</div>
             <div class="card-role">直冲型·地表</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/enemy_phantom_butterfly.png" alt="残影蝶"></div>
+          <div class="card-image"><img data-src="assets/chars/enemy_phantom_butterfly.jpg" alt="残影蝶"></div>
           <div class="card-info">
             <div class="card-name">残影蝶</div>
             <div class="card-role">环绕型·地表</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/enemy_rift_shooter.png" alt="裂隙射手"></div>
+          <div class="card-image"><img data-src="assets/chars/enemy_rift_shooter.jpg" alt="裂隙射手"></div>
           <div class="card-info">
             <div class="card-name">裂隙射手</div>
             <div class="card-role">远程型·地表</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/elite_gear_knight.png" alt="齿轮骑士"></div>
+          <div class="card-image"><img data-src="assets/chars/elite_gear_knight.jpg" alt="齿轮骑士"></div>
           <div class="card-info">
             <div class="card-name">齿轮骑士</div>
             <div class="card-role">精英·第2章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/elite_stone_general.png" alt="石像将军"></div>
+          <div class="card-image"><img data-src="assets/chars/elite_stone_general.jpg" alt="石像将军"></div>
           <div class="card-info">
             <div class="card-name">石像将军</div>
             <div class="card-role">精英·第3章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/elite_vessel_hunter.png" alt="血管猎手"></div>
+          <div class="card-image"><img data-src="assets/chars/elite_vessel_hunter.jpg" alt="血管猎手"></div>
           <div class="card-info">
             <div class="card-name">血管猎手</div>
             <div class="card-role">精英·第5章</div>
           </div>
         </div>
         <div class="char-card">
-          <div class="card-image"><img data-src="assets/chars/elite_rift_stitched.png" alt="裂隙缝合体"></div>
+          <div class="card-image"><img data-src="assets/chars/elite_rift_stitched.jpg" alt="裂隙缝合体"></div>
           <div class="card-info">
             <div class="card-name">裂隙缝合体</div>
             <div class="card-role">精英·第1章</div>

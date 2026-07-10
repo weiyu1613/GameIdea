@@ -570,31 +570,123 @@ img[data-src] {
 .layer-blood { background: linear-gradient(90deg, var(--realm-blood), var(--realm-blood-accent)); }
 .layer-mind { background: linear-gradient(90deg, var(--realm-mind), var(--accent)); }
 
-/* ===== 响应式 ===== */
-@media (max-width: 768px) {
-  .panel-split {
-    grid-template-columns: 1fr;
-  }
-
-  .panel-grid-4 {
-    grid-template-columns: 1fr;
-  }
-
-  .panel-ending {
-    grid-template-columns: 1fr;
-  }
-
-  .chapter-nav {
-    display: none;
-  }
-
-  .comic-container {
-    padding: 0 0.75rem;
-  }
+/* ===== 懒加载占位优化 ===== */
+img[data-src] {
+  background: linear-gradient(135deg, var(--bg-panel), var(--bg-soft));
+  min-height: 120px;
 }
 
+/* ===== 平板响应式 ===== */
 @media (max-width: 1024px) and (min-width: 769px) {
   .panel-split {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* ===== 手机响应式 ===== */
+@media (max-width: 768px) {
+  /* 容器与间距 */
+  .comic-container { padding: 0 0.75rem; }
+  :root {
+    --space-md: 1.25rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+  }
+
+  /* 章节导航隐藏 */
+  .chapter-nav { display: none; }
+
+  /* 布局变单列 */
+  .panel-split { grid-template-columns: 1fr; gap: 0.75rem; }
+  .panel-split.reverse { direction: ltr; }
+  .panel-grid-4 { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .panel-ending { grid-template-columns: 1fr; }
+
+  /* Splash面板降低高度 */
+  .panel-splash { min-height: 35vh; border-radius: var(--radius-md); }
+  .panel-splash .splash-overlay { padding: 1.5rem 1rem 1rem; }
+  .panel-splash .splash-title { font-size: 1.2rem; }
+  .panel-splash .splash-text { font-size: 0.85rem; }
+
+  /* 图片尺寸优化 */
+  .panel-split .split-image { aspect-ratio: 16/10; }
+  .panel-grid-4 .grid-item { aspect-ratio: 1/1; }
+
+  /* 字号优化 */
+  .panel-title { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .panel-text { font-size: 0.9rem; line-height: 1.75; }
+  .panel-tag { font-size: 0.65rem; padding: 2px 6px; }
+
+  /* 引用面板紧凑化 */
+  .panel-quote { padding: 1rem 1.25rem; margin: 0.75rem 0; }
+  .panel-quote .quote-text { font-size: 0.95rem; line-height: 1.6; }
+  .panel-quote .quote-speaker { font-size: 0.7rem; }
+
+  /* 文字面板紧凑化 */
+  .panel-text-only { padding: 1rem 1.25rem; margin: 0.75rem 0; }
+
+  /* 对话面板紧凑化 */
+  .dialogue { padding: 0.75rem 1rem; margin: 0.5rem 0; }
+  .dialogue .dialogue-text { font-size: 0.88rem; line-height: 1.7; }
+  .dialogue .dialogue-name { font-size: 0.7rem; }
+  .dialogue .dialogue-name .char-mini { width: 20px; height: 20px; }
+
+  /* 结局卡紧凑化 */
+  .panel-ending .ending-image { max-width: 100%; }
+  .panel-ending .ending-content .ending-title { font-size: 1.1rem; }
+  .panel-ending .ending-content .ending-text { font-size: 0.88rem; }
+
+  /* 章节分隔卡降低高度 */
+  .chapter-divider { min-height: 25vh; margin: 2rem 0; }
+  .chapter-divider .chapter-title { font-size: 1.6rem; }
+  .chapter-divider .chapter-subtitle { font-size: 0.85rem; }
+
+  /* 封面优化 */
+  .cover { min-height: 85vh; }
+  .cover .cover-title { font-size: 2.5rem; }
+  .cover .cover-subtitle { font-size: 0.85rem; letter-spacing: 0.1em; }
+  .cover .cover-slogan { font-size: 0.95rem; }
+  .cover .cover-content { padding: 1.5rem; }
+
+  /* 角色图鉴 */
+  .char-gallery { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; }
+  .char-gallery .char-card .card-name { font-size: 0.78rem; }
+  .char-gallery .char-card .card-role { font-size: 0.62rem; }
+
+  /* Boss阶段标签 */
+  .boss-phases .phase-tag { font-size: 0.62rem; padding: 3px 8px; }
+
+  /* 图片懒加载占位缩小 */
+  img[data-src] { min-height: 100px; }
+
+  /* 尾声 */
+  .epilogue { padding: 2rem 1rem; }
+  .epilogue .epilogue-title { font-size: 1.3rem; }
+  .epilogue .epilogue-text { font-size: 0.9rem; }
+}
+
+/* ===== 超小屏幕 (≤380px) ===== */
+@media (max-width: 380px) {
+  .comic-container { padding: 0 0.5rem; }
+  .cover .cover-title { font-size: 2rem; }
+  .panel-grid-4 { grid-template-columns: 1fr; }
+  .panel-splash { min-height: 30vh; }
+  .panel-title { font-size: 1rem; }
+  .panel-text { font-size: 0.85rem; }
+  .char-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== 触摸设备优化 ===== */
+@media (hover: none) and (pointer: coarse) {
+  .panel-split .split-image img { 
+    -webkit-user-select: none; 
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  .card:hover { transform: none; }
+}
+
+/* ===== 暗色背景适配 ===== */
+@media (prefers-color-scheme: dark) {
+  html { background: var(--bg); }
 }
