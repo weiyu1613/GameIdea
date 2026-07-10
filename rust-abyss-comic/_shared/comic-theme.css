@@ -643,10 +643,10 @@ img[data-src] {
 
   /* 封面优化 */
   .cover { min-height: 85vh; }
-  .cover .cover-title { font-size: 2.5rem; }
-  .cover .cover-subtitle { font-size: 0.85rem; letter-spacing: 0.1em; }
-  .cover .cover-slogan { font-size: 0.95rem; }
-  .cover .cover-content { padding: 1.5rem; }
+  .cover .cover-title { font-size: 2.5rem; margin-bottom: 1rem; }
+  .cover .cover-subtitle { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .cover .cover-slogan { font-size: 1rem; margin-top: 1rem; }
+  .cover .cover-content { padding: 2rem 1.5rem; }
 
   /* 角色图鉴 */
   .char-gallery { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; }

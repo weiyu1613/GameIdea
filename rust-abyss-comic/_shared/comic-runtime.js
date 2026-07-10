@@ -135,7 +135,10 @@
   });
 
   // ===== 移动端顶部快捷导航 =====
-  var isMobile = window.matchMedia('(max-width: 768px)').matches;
+  function checkMobile() {
+    return window.innerWidth <= 768 || window.matchMedia('(max-width: 768px)').matches;
+  }
+  var isMobile = checkMobile();
   if (isMobile) {
     var navToggle = document.createElement('div');
     navToggle.style.cssText = 'position:fixed;bottom:1rem;right:1rem;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;z-index:1001;box-shadow:0 4px 12px rgba(0,0,0,0.5);user-select:none;';
